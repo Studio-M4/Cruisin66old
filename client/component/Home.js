@@ -12,6 +12,7 @@ export default class Home extends React.Component {
     static navigationOptions = {
         title: 'Home',
     };
+
     render() {
         return (
             <Tabs />
@@ -37,6 +38,8 @@ const Tabs = createBottomTabNavigator({
           else if (routeName === 'Create') {
             iconName = `ios-add-circle${focused ? '' : '-outline'}`;
           }
+  
+  
           // You can return any component that you like here! We usually use an
           // icon component from react-native-vector-icons
           return <Ionicons name={iconName} size={25} color={tintColor} />;

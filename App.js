@@ -1,13 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image, TextInput, TouchableHighlight, ScrollView } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Image, 
+  TextInput, 
+  TouchableHighlight, 
+  ScrollView 
+} from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 
 //import views 
-import Login from './component/Login';
-import Home from './component/Home';
-import Details from './component/Details';
-import Favorites from './component/Favorites';
+import Login from './client/component/Login';
+import Home from './client/component/Home';
+import Details from './client/component/Details';
+import Favorites from './client/component/Favorites';
 
 
 class App extends React.Component {
