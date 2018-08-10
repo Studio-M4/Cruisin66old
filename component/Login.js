@@ -73,13 +73,13 @@ const styles = StyleSheet.create({
   imagesStyle: {
     width: 80,
     height: 80,
-    marginBottom: 40,
+    marginBottom: 20,
   },
   title: {
     fontSize: 32,
     fontWeight: 'bold',
     color: "#000",
-    marginTop: 60
+    marginTop: 20
   },
   inputStyle: {
     height: 40,
