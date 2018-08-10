@@ -25,7 +25,11 @@
     "android": "react-native-scripts android",
     "ios": "react-native-scripts ios",
     "test": "jest",
+<<<<<<< HEAD
     "lint": "eslint ./"
+=======
+    "database": "nodemon ./db//models/Stop.js"
+>>>>>>> setup Category, Itienrary, Stop models
   },
   "jest": {
     "preset": "jest-expo"
