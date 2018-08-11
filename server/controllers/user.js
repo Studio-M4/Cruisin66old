@@ -1,3 +1,4 @@
+// This is the file that pass request to db User model
 var models = require('../models/user.js');
 var bluebird = require('bluebird');
 

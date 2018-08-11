@@ -187,18 +187,18 @@ let signIn = (user, callback) => {
   });
 };
 
-createUser({
-  userName: 'MT3',
-  firstName: 'Miller3',
-  lastName: 'Tian',
-  email: 'miller3@gamil.com',
-  password: 'Welcome@123'
-});
+// createUser({
+//   userName: 'MT3',
+//   firstName: 'Miller3',
+//   lastName: 'Tian',
+//   email: 'miller3@gamil.com',
+//   password: 'Welcome@123'
+// });
 
-signIn({
-  email: 'miller3@gamil.com',
-  password: 'Welcome@123' 
-});
+// signIn({
+//   email: 'miller3@gamil.com',
+//   password: 'Welcome@123' 
+// });
 
 module.exports.createUser = createUser;
 module.exports.signIn = signIn;
