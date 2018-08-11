@@ -1,4 +1,4 @@
-const db = require(../../db/schema.js);
+const db = require('../../db/schema.js');
 
 const User = db.Model.extend({
   tableName: 'Users',
