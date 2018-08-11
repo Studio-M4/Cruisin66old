@@ -1,7 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableHighlight,ScrollView } from 'react-native';
+import MapView from 'react-native-maps';
 
-export default class Home extends React.Component {
+
+export default class Details extends React.Component {
     static navigationOptions = {
         title: 'Details',
     };
@@ -10,18 +12,27 @@ export default class Home extends React.Component {
   }
 
   render() {
+    // recieve data 
     const { navigation } = this.props;
     const theId = navigation.getParam('theId', 'NO-ID');
     const name = navigation.getParam('nameStop', 'No name define');
     const description = navigation.getParam('description', 'No name define');
 
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      <View>
+         <View style={styles.container}>
             <Text style={styles.title}> {name} </Text>
             <Text> {description} </Text>
         </View>
-      </ScrollView>
+        <MapView
+          initialRegion={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+          }}
+        />
+      </View>
     );
   }
 }

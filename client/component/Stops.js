@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View,FlatList, Image, TextInput, TouchableHighlight,ScrollView,Modal } from 'react-native';
+import MapView from 'react-native-maps';
 
-
-export default class Favorites extends React.Component {
+export default class Stops extends React.Component {
     static navigationOptions = {
-        title: 'Favoris',
+        title: 'Stops',
     };
   constructor(props) {
     super(props);
@@ -16,12 +16,20 @@ export default class Favorites extends React.Component {
 
 
   goDetails(){
-    this.props.navigation.navigate('Profil');
+    this.props.navigation.navigate('Details');
   }
 
   render() {
     return (
       <View style={styles.container}>
+      <MapView
+    initialRegion={{
+      latitude: 37.78825,
+      longitude: -122.4324,
+      latitudeDelta: 0.0922,
+      longitudeDelta: 0.0421,
+    }}
+  />
         <FlatList
           data={[
            

@@ -61,16 +61,13 @@ class Login extends React.Component {
           
             <TextInput
               style={styles.inputStyle}
-              placeholder='Email'
-              keyboardType='email-address'
-              autoCorrect={false}
-              autoCapitalize='none'
+              placeholder="Your email"
               onChangeText={(email) => this.setState({ email })}
               value={this.state.email}
             />
             <TextInput
               style={styles.inputStyle}
-              placeholder='Password'
+              placeholder="Your password"
               onChangeText={(password) => this.setState({ password })}
               value={this.state.password}
               secureTextEntry
@@ -79,7 +76,7 @@ class Login extends React.Component {
             <TouchableHighlight
               style={styles.button}
               onPress={this.onLoginPressed.bind(this)}
-              // onPress={() => this.props.navigation.navigate('Home')}
+              onPress={() => this.props.navigation.navigate('Home')}
               >
               <Text style={styles.buttonTextColor}> LOGIN </Text>
             </TouchableHighlight>
