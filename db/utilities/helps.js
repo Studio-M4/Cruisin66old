@@ -1,7 +1,6 @@
 const bcrypt = require('bcrypt-nodejs');
-const db = require('../db/index.js');
 
-const hashPassword = (URLSearchParams, callback) => {
+const hashPassword = (user, callback) => {
   bcrypt.genSalt(10, (err, salt) => {
     if (err) {
       console.log(err);

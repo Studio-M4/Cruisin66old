@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db.js');
-var Op = Sequelize.Op;
+const hash = require('../utilities/helps.js');
+const bcrypt = require('bcrypt-nodejs');
 
 const User = db.define('user', {
   userName: {
@@ -67,7 +68,7 @@ const User = db.define('user', {
 
 let createUser = (user, callback) => {
   User
-  .sync({ force: false })
+  .sync({ force: true })
   .then(() => {
     // Retrieve objects from the database:
     return User.findOne({ 
@@ -87,12 +88,14 @@ let createUser = (user, callback) => {
         });
       }      
     } else {
-      return User.create({
-        userName: user.userName,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        password: user.password
+      hash.hashPassword(user, (err, userResult) => {
+        return User.create({
+          userName: userResult.userName,
+          firstName: userResult.firstName,
+          lastName: userResult.lastName,
+          email: userResult.email,
+          password: userResult.password
+        });
       });
     }        
   })
@@ -122,24 +125,26 @@ let signIn = (user, callback) => {
   .then((existingUser) => {
     console.log(existingUser);
     if (existingUser !== null) {
-      if (existingUser.password === user.password) {
-        console.log('User login successfully!');
-        if (callback !== undefined) {
-          callback({
-            messageCode: 200, 
-            message: 'User login successfully!',
-            user: existingUser
-          });
-        } 
-      } else {
-        console.log('Wrong password');
-        if (callback !== undefined) {
-          callback({
-            messageCode: 103, 
-            message: 'Wrong password!'
-          });
+      bcrypt.compare(user.password, existingUser.password, function(err, res) {
+        if (res === true) {
+          console.log('User login successfully!');
+          if (callback !== undefined) {
+            callback({
+              messageCode: 200, 
+              message: 'User login successfully!',
+              user: existingUser
+            });
+          } 
+        } else {
+          console.log('Wrong password');
+          if (callback !== undefined) {
+            callback({
+              messageCode: 103, 
+              message: 'Wrong password!'
+            });
+          }
         }
-      }
+      });
     } else {
       console.log('User does not exist');
       if (callback !== undefined) {       
@@ -149,7 +154,6 @@ let signIn = (user, callback) => {
         });
       }
     }
-    db.close();      
   })
   .catch((err) => {
     // Handle any error in the chain
@@ -158,18 +162,18 @@ let signIn = (user, callback) => {
   });
 };
 
-createUser({
-  userName: 'MT',
-  firstName: 'Miller',
-  lastName: 'Tian',
-  email: 'miller2@gamil.com',
-  password: 'Welcome@123'
-});
+// createUser({
+//   userName: 'MT3',
+//   firstName: 'Miller3',
+//   lastName: 'Tian',
+//   email: 'miller3@gamil.com',
+//   password: 'Welcome@123'
+// });
 
-signIn({
-  email: 'miller@gamil.com',
-  password: 'Welcome@123' 
-});
+// signIn({
+//   email: 'miller3@gamil.com',
+//   password: 'Welcome@123' 
+// });
 
 module.exports.createUser = createUser;
 module.exports.signIn = signIn;
