@@ -55,7 +55,7 @@ class Login extends React.Component {
             {/* Crunin'66 */}
           </Text>
           <View>
-            <Image style={styles.imagesStyle} source={require('../imgs/icon.png')} />
+            <Image style={styles.imagesStyle} source={require('./imgs/icon.png')} />
           </View>
           <View style={styles.formStyle}>
           
