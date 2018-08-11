@@ -184,8 +184,7 @@ let signIn = (user, callback) => {
     // Handle any error in the chain
     console.error(err);
     db.close();
-  });
-};
+
 
 // createUser({
 //   userName: 'MT3',
@@ -202,4 +201,50 @@ let signIn = (user, callback) => {
 
 module.exports.createUser = createUser;
 module.exports.signIn = signIn;
+
+
+//Code written by sophia 
+'use strict';
+module.exports = (Sequelize, type) => {
+  var User = Sequelize.define('User', {
+    username: type.STRING,
+    firstName: type.STRING,
+    lastName: type.STRING,
+    password: type.STRING,
+    photoAvatar: type.STRING,
+  });
+
+  User.associate = function(models) {
+    User.belongsToMany(models.Category, {through: 'userInterests'});
+    User.hasMany(models.Itinerary)
+    User.hasMany(models.ItinerariesComment)
+    User.hasMany(models.StopsComment)
+    User.hasMany(models.Favorite)
+  };
+
+  return User;
+};
+
+
+// const Sequelize = require('sequelize');
+// const db = require('../db.js');
+
+
+// const User = db.define('user', {
+//   username: Sequelize.STRING,
+//   firstName: Sequelize.STRING,
+//   lastName: Sequelize.STRING,
+//   password: Sequelize.STRING,
+//   photoAvar: Sequelize.STRING,
+// });
+
+// User
+//   .sync({ force: true })
+//   .then(() => {
+//     return User.create({
+//       username: 'potato',
+//       firstName: 'henry',
+//       lastName: 'han'
+//     });
+//   });
 
