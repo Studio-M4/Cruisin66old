@@ -26,11 +26,7 @@
     "ios": "react-native-scripts ios",
     "test": "jest",
     "lint": "eslint ./",
-<<<<<<< HEAD
-    "database": "nodemon ./db/models/Stop.js"
-=======
     "database": "nodemon ./db/models/index.js"
->>>>>>> set up associations between models
   },
   "jest": {
     "preset": "jest-expo"
