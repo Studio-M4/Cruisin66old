@@ -9,7 +9,7 @@ import {
   ScrollView 
 } from 'react-native';
 
-import { createBottomTabNavigator,createTabNavigator, createStackNavigator } from "react-navigation";
+import { createBottomTabNavigator,createTabNavigator, createSwitchNavigator,createStackNavigator } from "react-navigation";
 //import views 
 import Login from './client/component/Login';
 import Details from './client/component/Details';
@@ -56,20 +56,29 @@ const Tabs = createBottomTabNavigator(
     swipeEnabled: true,
   }
 );
+// Define navigator
+const AppStack = createStackNavigator({ 
+  Home: Tabs, // Home 's a key not a component 
+  Details: Details,
+  Favorites:Favorites,
+  Itinerary:Itinerary,
+  Stops:Stops,
+  Profil:Profil
+});
+// Auth navigator
+const AuthStack = createStackNavigator({ Login: Login });
 
-const RootStack = createStackNavigator(
+// use switch navigator to fixe the back button in the login
+const RootStack = createSwitchNavigator(
   {
-    Login: Login,
-    Home: Tabs, // Home 's a key not a component 
-    Details: Details,
-    Favorites:Favorites,
-    Itinerary:Itinerary,
-    Stops:Stops,
+    App: AppStack,
+    Auth: AuthStack,
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'Auth'
   }
 );
+
 class App extends React.Component {
   render() {
     return (
@@ -77,8 +86,6 @@ class App extends React.Component {
     );
   }
 }
-
-
 
 export default App
 

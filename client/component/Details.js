@@ -14,15 +14,15 @@ export default class Details extends React.Component {
   render() {
     // recieve data 
     const { navigation } = this.props;
-    const theId = navigation.getParam('theId', 'NO-ID');
-    const name = navigation.getParam('nameStop', 'No name define');
-    const description = navigation.getParam('description', 'No name define');
+    const item = navigation.getParam('item',{});
 
+    console.log(" The item ",item )
     return (
       <View>
          <View style={styles.container}>
-            <Text style={styles.title}> {name} </Text>
-            <Text> {description} </Text>
+            <Text> {item.id} </Text>
+            <Text style={styles.title}> {item.title} </Text>
+            <Text> {item.title} </Text>
         </View>
         <MapView
           initialRegion={{

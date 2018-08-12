@@ -8,7 +8,8 @@ import {
   TouchableHighlight,
   ScrollView,
   Modal,
-  FlatList
+  FlatList,
+  Button
 } from "react-native";
 
 
@@ -19,13 +20,11 @@ export default class Itinerary extends React.Component {
   constructor(props) {
     super(props);
   }
-  goDetails(){
-    this.props.navigation.navigate('Stops');
-  }
 
   render() {
     return (
       <View style={styles.container}>
+    
         <FlatList
           data={[
             {
@@ -93,11 +92,15 @@ export default class Itinerary extends React.Component {
               thumbnailUrl: "http://placehold.it/150/56a8c2"
             }
           ]}
-          renderItem={({ item }) =>
+          renderItem={({item }) =>
          
           <TouchableHighlight
-          onPress={() => this.goDetails()}
-
+          onPress={() => {
+            /* 1. Navigate to the Details route with params */
+            this.props.navigation.navigate('Stops',{
+              id: item
+            });
+          }} 
           >
             <View style={styles.container}>
             

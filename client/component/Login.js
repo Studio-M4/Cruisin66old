@@ -20,7 +20,7 @@ import FormMessage from './FormMessage'
 class Login extends React.Component {
 
   static navigationOptions = {
-      title: 'Login',
+      title: 'Crunin\'66'
   };
 
   constructor(props) {
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: "#000",
-    marginTop: 60
+    marginTop: 40
   },
   inputStyle: {
     height: 40,

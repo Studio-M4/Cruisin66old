@@ -31,6 +31,7 @@ export default class Stops extends React.Component {
     }}
   />
         <FlatList
+        
           data={[
            
             {
@@ -57,8 +58,12 @@ export default class Stops extends React.Component {
           ]}
           renderItem={({ item }) =>
           <TouchableHighlight
-          onPress={() => this.goDetails()}
-
+          onPress={() => {
+            /* 1. Navigate to the Details route with params */
+            this.props.navigation.navigate('Details', {
+              item : item
+            });
+          }} 
           >
             <View style={styles.container}>
             
