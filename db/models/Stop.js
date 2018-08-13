@@ -13,7 +13,7 @@ module.exports = (Sequelize, type) => {
 
   Stop.associate = function(models) {
     Stop.hasMany(models.StopsComment)
-    Stop.hasMany(models.Photo)
+    Stop.hasMany(models.StopPhoto)
     Stop.belongsToMany(models.Itinerary, {through: 'ItineraryStops'});
   };
 
