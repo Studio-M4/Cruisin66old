@@ -1,12 +1,12 @@
-var controller = require('./controllers');
+var user = require('./controllers/user.js');
 var router = require('express').Router();
 
 // Connect controller methods to their corresponding routes
-router.post('/login', controller.users.login);
+router.post('/login', user.login);
 
-router.post('/logout', controller.users.logout);
+// router.post('/logout', controller.users.logout);
 
-router.post('/signup', controller.users.signup);
+router.post('/signup', user.signup);
 
 // router.get('/itineraries', controller.itineraries.getAll);
 
