@@ -34,9 +34,8 @@ db.fetchStopComments = (stopId) => {
 
 db.fetchStopPhotos = (stopId) => {
     console.log('Fetching an itineraries photos');
-    return db.Photo.findAll({where: {stopId: stopId}})
+    return db.StopPhoto.findAll({where: {stopId: stopId}})
 } 
-
 
 db.fetchUserFavorites = (userId) => {
     console.log('Fetching users favorited itineraries');
