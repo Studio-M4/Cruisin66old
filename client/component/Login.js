@@ -101,10 +101,9 @@ class Login extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#eee',
     alignItems: 'center',
     width: '100%',
     borderColor: '#000',
@@ -119,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: 'bold',
     color: "#000",
-    marginTop: 40
+    marginTop: 0
   },
   inputStyle: {
     height: 40,

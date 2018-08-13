@@ -19,7 +19,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import Profil from "./client/component/Profil";
 import Create from "./client/component/Create";
 import Stops from "./client/component/Stops";
-
+import CommentStop from "./client/component/CommentStop";
 
 // can't swipe createBottomTabNavigator 
 // createTabNavigator depreciate but can swip :)
@@ -63,7 +63,8 @@ const AppStack = createStackNavigator({
   Favorites:Favorites,
   Itinerary:Itinerary,
   Stops:Stops,
-  Profil:Profil
+  Profil:Profil,
+  CommentStop:CommentStop
 });
 // Auth navigator
 const AuthStack = createStackNavigator({ Login: Login });
