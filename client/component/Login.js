@@ -83,7 +83,7 @@ class Login extends React.Component {
 
              <TouchableHighlight
               style={styles.button}
-              //onPress={() => this.props.navigation.navigate('Details')}
+              onPress={() => this.props.navigation.navigate('Signup')}
               >
               <Text style={styles.buttonTextColor}> SIGN UP </Text>
             </TouchableHighlight>

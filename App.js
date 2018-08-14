@@ -12,6 +12,7 @@ import {
 import { createBottomTabNavigator,createTabNavigator, createSwitchNavigator,createStackNavigator } from "react-navigation";
 //import views 
 import Login from './client/component/Login';
+import Signup from './client/component/Signup';
 import Details from './client/component/Details';
 import Favorites from './client/component/Favorites';
 import Itinerary from "./client/component/Itinerary";
@@ -71,7 +72,14 @@ const AppStack = createStackNavigator({
   CommentStop:CommentStop
 });
 // Auth navigator
-const AuthStack = createStackNavigator({ Login: Login });
+const AuthStack = createStackNavigator(
+  { Login: Login,
+    Signup: Signup
+  },
+  {
+    initialRouteName: 'Login'
+  }
+);
 
 // use switch navigator to fixe the back button in the login
 const RootStack = createSwitchNavigator(
