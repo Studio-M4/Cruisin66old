@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const bcrypt = require('bcrypt-nodejs');
-const db = require('../db.js');
+// const db = require('../db.js');
 const hash = require('../utilities/helps.js');
 var bluebird = require('bluebird');
 

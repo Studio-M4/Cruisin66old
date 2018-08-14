@@ -39,6 +39,7 @@ module.exports = {
     });
   },
   signup: (req, res) => {
+    console.log('signup');
     let newUser = {
       firstName: req.body.firstName,
       lastName: req.body.lastName,

@@ -1,5 +1,5 @@
 var express = require('express');
-var db = require('../db/db.js');
+// var db = require('../db/db.js');
 
 // Middleware
 var morgan = require('morgan');
@@ -18,7 +18,7 @@ app.use(morgan('dev'));
 app.use(parser.json);
 
 // Set up the routes
-app.use('/classes', router);
+app.post('/signup', router);
 
 if (!module.parent) {
   app.listen(app.get('port'));
