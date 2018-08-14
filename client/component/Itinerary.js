@@ -11,8 +11,9 @@ import {
   FlatList,
   Button
 } from "react-native";
+import { Container, Header, Left, Body, Right, Title } from 'native-base';
 
-
+import { SearchBar } from 'react-native-elements'
 export default class Itinerary extends React.Component {
   static navigationOptions = {
     title: "Itenary"
@@ -21,10 +22,18 @@ export default class Itinerary extends React.Component {
     super(props);
   }
 
+
   render() {
     return (
-      <View style={styles.container}>
-    
+      <View style={styles.container2}>
+       <SearchBar
+        lightTheme
+        searchIcon=""
+        // onChangeText={someMethod}
+        // onClear={someMethod}
+        placeholder='Type Here...' />
+      <View style={styles.container2}>
+ 
         <FlatList
           data={[
             {
@@ -115,6 +124,7 @@ export default class Itinerary extends React.Component {
           keyExtractor={(item, index) => index.toString()}
         />
       </View>
+      </View>
     );
   }
 }
@@ -124,7 +134,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     margin:4,
-    borderRadius: 5
+    borderRadius: 5,
+  },
+  container2: {
+    display: "flex",
+    flex: 1,
+    flexDirection: "column",
+    margin:4,
+    borderRadius: 5,
+    backgroundColor:'#eee'
+
   },
   title: {
     fontSize: 15,

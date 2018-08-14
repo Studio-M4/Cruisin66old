@@ -1,10 +1,10 @@
-import React from 'react';
-import { 
-  StyleSheet, 
-  Text, 
-  View, 
-  Image, 
-  TextInput, 
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TextInput,
   TouchableHighlight,
   ScrollView,
   ActivityIndicator,
@@ -19,7 +19,6 @@ import FormMessage from './FormMessage'
 
 
 class Login extends React.Component {
-
   static navigationOptions = {
       title: 'Cruisin\'66'
   };
@@ -94,10 +93,12 @@ class Login extends React.Component {
             {/* Cruisin'66 */}
           </Text>
           <View>
-            <Image style={styles.imagesStyle} source={require('./imgs/icon.png')} />
+            <Image
+              style={styles.imagesStyle}
+              source={require("./imgs/icon.png")}
+            />
           </View>
           <View style={styles.formStyle}>
-          
             <TextInput
               style={styles.inputStyle}
               placeholder="username"
@@ -107,7 +108,7 @@ class Login extends React.Component {
             <TextInput
               style={styles.inputStyle}
               placeholder="Your password"
-              onChangeText={(password) => this.setState({ password })}
+              onChangeText={password => this.setState({ password })}
               value={this.state.password}
               secureTextEntry
             />
@@ -127,20 +128,18 @@ class Login extends React.Component {
               <Text style={styles.buttonTextColor}> LOGIN (go to home) </Text>
             </TouchableHighlight>
 
-             <TouchableHighlight
+            <TouchableHighlight
               style={styles.button}
               onPress={() => this.props.navigation.navigate('Signup')}
               >
               <Text style={styles.buttonTextColor}> SIGN UP </Text>
             </TouchableHighlight>
-
           </View>
           <ActivityIndicator
             animating={this.state.showProgress}
-            size='large'
+            size="large"
             style={styles.loader}
           />
-
         </View>
       </ScrollView>
     );
@@ -149,59 +148,59 @@ class Login extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#eee',
-    alignItems: 'center',
-    width: '100%',
-    borderColor: '#000',
-    height: '100%'
+    backgroundColor: "#eee",
+    alignItems: "center",
+    width: "100%",
+    borderColor: "#000",
+    height: "100%"
   },
   imagesStyle: {
     width: 80,
     height: 80,
-    marginBottom: 40,
+    marginBottom: 40
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: "#000",
     marginTop: 0
   },
   inputStyle: {
     height: 40,
     width: 300,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
     borderWidth: 0.4,
     paddingLeft: 10,
     marginTop: 10
   },
   formStyle: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    width: '100%',
-    borderColor: '#000',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    width: "100%",
+    borderColor: "#000",
     height: "auto",
     paddingBottom: 20,
     paddingTop: 21
   },
   button: {
-    alignItems: 'center',
-    backgroundColor: '#336699',
+    alignItems: "center",
+    backgroundColor: "#336699",
     marginTop: 20,
     padding: 10,
     width: 300,
-    justifyContent: 'center',
+    justifyContent: "center",
     borderRadius: 5
   },
   buttonTextColor: {
-    color: '#fff',
+    color: "#fff"
   },
   loader: {
     marginTop: 10
   },
   error: {
-    color: 'red',
+    color: "red",
     marginBottom: 20
-  }  
+  }
 });
 
 export default Login;

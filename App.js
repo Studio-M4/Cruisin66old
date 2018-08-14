@@ -59,6 +59,7 @@ const Tabs = createBottomTabNavigator(
       inactiveTintColor: "gray"
     },
     swipeEnabled: true,
+    
   }
 );
 // Define navigator

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,FlatList,Image, TextInput, TouchableHighlight,ScrollView,Modal } from 'react-native';
 
-
+import { Container, Header, Content, Item, Input } from 'native-base';
 export default class CommentStop extends React.Component {
     static navigationOptions = {
         title: 'Comments',
@@ -113,7 +113,7 @@ export default class CommentStop extends React.Component {
           }
           keyExtractor={(item, index) => index.toString()}
         />
-          </ScrollView>
+        </ScrollView>
            <TextInput
          style={styles.inputStyle}
          placeholder="Be nice !!!"
@@ -145,7 +145,6 @@ const styles = StyleSheet.create({
     color: "#777",
     marginTop: 7,
     padding:9,
-    backgroundColor:'#eee',
     borderRadius:25,
     marginLeft: 4,
     width: "80%",
@@ -180,6 +179,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.4,
     paddingLeft: 10,
     marginTop: 10,
-    bottom:0
+    bottom:5,
+    borderRadius:20
   }
 });
