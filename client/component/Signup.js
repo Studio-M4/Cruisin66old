@@ -132,7 +132,7 @@ class Signup extends React.Component {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    marginTop: 50,
+    marginTop: 5,
     padding: 20,
     backgroundColor: '#ffffff',
   },

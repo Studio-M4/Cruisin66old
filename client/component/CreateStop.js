@@ -19,8 +19,8 @@ export default class CreateStop extends React.Component {
       assetType: "Photos"
     })
       .then(r => {
-        console.log(r);
-        this.setState({ photos: r.edges });
+        console.log("Imges back",r.edges);
+        this.setState({ photos: r.edges});
       })
       .catch(err => {
         console.log(err);
@@ -31,7 +31,6 @@ export default class CreateStop extends React.Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-          <Text style={styles.title}> Stop: </Text>
           <GooglePlacesAutocomplete
             placeholder="Search"
             minLength={2} // minimum length of text to search
@@ -42,7 +41,7 @@ export default class CreateStop extends React.Component {
             renderDescription={row => row.description} // custom description render
             onPress={(data, details = null) => {
               // 'details' is provided when fetchDetails = true
-              console.log(data, details);
+             // console.log(data, details);
             }}
             getDefaultValue={() => ""}
             query={{
@@ -89,20 +88,22 @@ export default class CreateStop extends React.Component {
           />
 
           <Button title="Load Images" onPress={this._handleButtonPress} />
+
           <ScrollView>
-            {this.state.photos.map((p, i) => {
-              return (
-                <Image
-                  key={i}
-                  style={{
-                    width: 300,
-                    height: 100
-                  }}
-                  source={{ uri: p.node.image.uri }}
-                />
-              );
-            })}
+            <Image
+              // key={i}
+              style={{
+                width: 300,
+                height: 100
+              }}
+              // source={{ uri: p.node.image.uri }}
+            />
+            <Text>
+
+            should i see somting  {this.state.photos.image}
+            </Text>
           </ScrollView>
+
         </View>
       </ScrollView>
     );
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     color: "#000",
-    marginTop: 60
+    marginTop: 1
   },
   button: {
     alignItems: "center",
