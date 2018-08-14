@@ -9,11 +9,12 @@ import {
   ScrollView,FlatList
 } from "react-native";
 import MapView from "react-native-maps";
-import { Button } from "native-base";
 import { Rating } from 'react-native-elements';
+import { Button } from "native-base";
+
 export default class Details extends React.Component {
   static navigationOptions = {
-    title: "Details"
+    title: "Details",
   };
   constructor(props) {
     super(props);

@@ -22,6 +22,7 @@ import CreateItinerary from "./client/component/CreateItinerary";
 import CreateStop from './client/component/CreateStop';
 import Stops from "./client/component/Stops";
 import CommentStop from "./client/component/CommentStop";
+import MapComponent from "./client/component/MapComponent";
 
 // can't swipe createBottomTabNavigator 
 // createTabNavigator depreciate but can swip :)
@@ -30,9 +31,8 @@ const Tabs = createBottomTabNavigator(
     Itinerary: Itinerary,
     Favorites: Favorites,
     CreateItinerary: CreateItinerary,
-    Profil: Profil,
-    CreateStop: CreateStop
-  },
+    Profil: Profil
+    },
   {
     navigationOptions: ({ navigation }) => ({
       tabBarIcon: ({ focused, tintColor }) => {
@@ -46,8 +46,6 @@ const Tabs = createBottomTabNavigator(
           iconName = `ios-add-circle${focused ? "" : "-outline"}`;
         } else if (routeName === "Itinerary") {
           iconName = `ios-menu${focused ? "" : "-outline"}`;
-        } else if (routeName === "CreateStop") {
-          iconName = `ios-add-circle${focused ? "" : "-outline"}`;
         }
         // You can return any component that you like here! We usually use an
         // icon component from react-native-vector-icons
@@ -70,7 +68,9 @@ const AppStack = createStackNavigator({
   Itinerary:Itinerary,
   Stops:Stops,
   Profil:Profil,
-  CommentStop:CommentStop
+  CommentStop:CommentStop,
+  MapComponent: MapComponent,
+  CreateStop:CreateStop
 });
 // Auth navigator
 const AuthStack = createStackNavigator(

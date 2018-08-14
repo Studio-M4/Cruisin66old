@@ -1,7 +1,25 @@
 import React from 'react';
-import { StyleSheet, Text, View,FlatList,Image, TextInput, TouchableHighlight,ScrollView,Modal } from 'react-native';
+import { StyleSheet, View,FlatList,Image, TextInput, TouchableHighlight,ScrollView,Modal } from 'react-native';
 
-import { Container, Header, Content, Item, Input } from 'native-base';
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Button,
+  Icon,
+  Left,
+  List,
+  ListItem,
+  Body,
+  Right,
+  Title,
+  Item,Input
+} from "native-base";
+
 export default class CommentStop extends React.Component {
     static navigationOptions = {
         title: 'Comments',
@@ -18,10 +36,10 @@ export default class CommentStop extends React.Component {
   }
 
   render() {
-    return (
-
-      <View style={styles.container}>
-            <ScrollView>
+    return (  
+      <Container>
+      <Content>
+        <List>
         <FlatList
           data={[
             {
@@ -102,24 +120,41 @@ export default class CommentStop extends React.Component {
           ]}
           renderItem={({ item }) =>
           <TouchableHighlight>
-            <View style={styles.container2}>
-            <Image
-              style={styles.imagesStyle}
-              source={{ uri: item.thumbnailUrl }}
-            />
-            <Text style={styles.title}>{item.title}</Text>
-          </View>
+    
+          <ListItem thumbnail>
+            <Left>
+              <Thumbnail round  source={{ uri: item.thumbnailUrl }} />
+            </Left>
+            <Body>
+              <Text>Sankhadeep</Text>
+              <Text note numberOfLines={1}>{item.title}</Text>
+            </Body>
+            <Right>
+              <Button transparent>
+                <Text like>  1h ago</Text>
+              </Button>
+            </Right>
+          </ListItem>
+     
         </TouchableHighlight>
           }
           keyExtractor={(item, index) => index.toString()}
         />
-        </ScrollView>
-           <TextInput
+        </List>
+        <View style={styles.container}>
+        <TextInput
          style={styles.inputStyle}
          placeholder="Be nice !!!"
        />
-      </View>
-  
+         <Button rounded light>
+            <Text>Post</Text>
+          </Button>
+          </View>
+      </Content>
+    </Container>
+
+    
+
     );
   }
 }
@@ -127,7 +162,7 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flex: 1,
-    flexDirection: "column",
+    flexDirection: "row",
     backgroundColor:'#fff',
     margin:4,
     borderRadius: 5
@@ -174,11 +209,12 @@ const styles = StyleSheet.create({
   },
   inputStyle: {
     height: 40,
-    width: '90%',
+    width: '80%',
     borderColor: '#ccc',
     borderWidth: 0.4,
     paddingLeft: 10,
     marginTop: 10,
+    marginLeft: 4,
     bottom:5,
     borderRadius:20
   }

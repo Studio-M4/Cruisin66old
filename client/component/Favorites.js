@@ -1,6 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View,FlatList, Image, TextInput, TouchableHighlight,ScrollView,Modal } from 'react-native';
+import { StyleSheet, View,FlatList, Image, TextInput,
+   TouchableHighlight,ScrollView,Modal } from 'react-native';
 
+import {
+  Container,
+  Header,
+  Content,
+  Card,
+  CardItem,
+  Thumbnail,
+  Text,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right,
+  Title,
+  Item,Input
+} from "native-base";
 
 export default class Favorites extends React.Component {
     static navigationOptions = {
@@ -21,16 +38,16 @@ export default class Favorites extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <Container>
+      <Content>
         <FlatList
           data={[
-           
             {
               albumId: 1,
-              id: 2,
-              title: "reprehenderit est deserunt velit ipsam",
-              url: "http://placehold.it/600/771796",
-              thumbnailUrl: "http://placehold.it/150/771796"
+              id: 1,
+              title: "accusamus beatae ad facilis cum similique qui sunt",
+              url: "http://placehold.it/600/92c952",
+              thumbnailUrl: "http://placehold.it/150/92c952"
             },
             {
               albumId: 1,
@@ -39,32 +56,64 @@ export default class Favorites extends React.Component {
               url: "http://placehold.it/600/771796",
               thumbnailUrl: "http://placehold.it/150/771796"
             },
+            
             {
               albumId: 1,
-              id: 5,
-              title: "natus nisi omnis corporis facere molestiae rerum in",
-              url: "http://placehold.it/600/f66b97",
-              thumbnailUrl: "http://placehold.it/150/f66b97"
+              id: 6,
+              title: "accusamus ea aliquid et amet sequi nemo",
+              url: "http://placehold.it/600/56a8c2",
+              thumbnailUrl: "http://placehold.it/150/56a8c2"
             }
           ]}
-          renderItem={({ item }) =>
-          <TouchableHighlight
-          onPress={() => this.goDetails()}
-
-          >
-            <View style={styles.container}>
-            
-            <Image
-              style={styles.imagesStyle}
-              source={{ uri: item.thumbnailUrl }}
-            />
-            <Text style={styles.title}>{item.title}</Text>
-          </View>
-        </TouchableHighlight>
-          }
+          renderItem={({ item }) => (
+            <TouchableHighlight
+              onPress={() => {
+                /* 1. Navigate to the Details route with params */
+                this.props.navigation.navigate("Stops", {
+                  id: item
+                });
+              }}
+            >
+              <Card>
+                <CardItem>
+                  <Left>
+                    <Thumbnail source={{ uri: item.thumbnailUrl }} />
+                    <Body>
+                      <Text>Julio </Text>
+                      <Text note>{item.title}</Text>
+                    </Body>
+                  </Left>
+                </CardItem>
+                <CardItem cardBody>
+                  <Image
+                    source={{ uri: item.thumbnailUrl }}
+                    style={{ height: 200, width: null, flex: 1 }}
+                  />
+                </CardItem>
+                <CardItem>
+                  <Left>
+                    <Button transparent>
+                      <Icon active name="thumbs-up" />
+                      <Text>12 Likes</Text>
+                    </Button>
+                  </Left>
+                  <Body>
+                    <Button transparent>
+                      <Icon active name="chatbubbles" />
+                      <Text>4 Comments</Text>
+                    </Button>
+                  </Body>
+                  <Right>
+                    <Text>11h ago</Text>
+                  </Right>
+                </CardItem>
+              </Card>
+            </TouchableHighlight>
+          )}
           keyExtractor={(item, index) => index.toString()}
         />
-      </View>
+      </Content>
+    </Container>
     );
   }
 }
