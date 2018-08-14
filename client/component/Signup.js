@@ -71,9 +71,39 @@ class Signup extends React.Component {
 
   handleSubmit = () => {
     const value = this._form.getValue(); // use that ref to get the form value
-    console.log('value', value)
+    // console.log('value', value)
     this.setState({userInfo: value})
     console.log('state', this.state)
+    this.createUser()
+  }
+
+  //todo: handle response errors (Ex: account already exists)
+
+  createUser() {
+    console.log('inside createUser')
+
+    return fetch('http://localhost:3000/signup', {
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+      })
+    })
+    .then((response) => {
+      if (response.error) {
+        console.log("Error with sign up, account already exists, ")
+      } else {
+        console.log('Sign up successful')
+        .then(() => {
+          this.props.navigation.navigate('Login')
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   render() {
@@ -88,6 +118,7 @@ class Signup extends React.Component {
           style={styles.button}
           title="Sign Up"
           onPress={this.handleSubmit}
+          // onPress={() => this.props.navigation.navigate('Login')}
         >
           <Text style={styles.buttonTextColor}>Sign Up </Text>
         </Button>

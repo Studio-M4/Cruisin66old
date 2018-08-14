@@ -7,7 +7,8 @@ import {
   TextInput, 
   TouchableHighlight,
   ScrollView,
-  ActivityIndicator
+  ActivityIndicator,
+  AsyncStorage
 } from 'react-native';
 import {
   InputGroup,
@@ -20,31 +21,69 @@ import FormMessage from './FormMessage'
 class Login extends React.Component {
 
   static navigationOptions = {
-      title: 'Crunin\'66'
+      title: 'Cruisin\'66'
   };
 
   constructor(props) {
       super(props);
       this.state = {
-        email: '',
+        username: '',
         password: '',
+        validUsername: false, 
+        validPassword: false,
         showProgress: false,
         error: null
       };
   }
 
-  onLoginPressed() {
-    this.setState({showProgress: true});
-  }
+  // onLoginPressed() {
+  //   this.setState({showProgress: true});
+  // }
 
-  renderError() {
-    if (this.state.error) {
-      return (
-        <Text style={styles.error}>
-          {this.state.error}
-        </Text>
-      )
-    }
+  // renderError() {
+  //   if (this.state.error) {
+  //     return (
+  //       <Text style={styles.error}>
+  //         {this.state.error}
+  //       </Text>
+  //     )
+  //   }
+  // }
+
+  //todo: handler utility for response messages 
+  //https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb
+
+
+  submitLogin() {
+    console.log('inside submitLogin')
+    console.log('username', this.state.username)
+    console.log('password', this.state.password)
+
+    return fetch('http://localhost:3000/login', {
+      method: 'POST', 
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    })
+    .then((response) => {
+      if (response.error) {
+        console.log("Error with login information")
+      } else {
+        console.log('Login success')
+        AsyncStorage.setItem('token', response.token)
+        .then(() => {
+          this.props.navigation.navigate('Home')
+        });
+      }
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   render() {
@@ -52,7 +91,7 @@ class Login extends React.Component {
       <ScrollView>
         <View style={styles.container}>
           <Text style={styles.title}>
-            {/* Crunin'66 */}
+            {/* Cruisin'66 */}
           </Text>
           <View>
             <Image style={styles.imagesStyle} source={require('./imgs/icon.png')} />
@@ -61,9 +100,9 @@ class Login extends React.Component {
           
             <TextInput
               style={styles.inputStyle}
-              placeholder="Your email"
-              onChangeText={(email) => this.setState({ email })}
-              value={this.state.email}
+              placeholder="username"
+              onChangeText={(username) => this.setState({ username })}
+              value={this.state.username}
             />
             <TextInput
               style={styles.inputStyle}
@@ -75,10 +114,17 @@ class Login extends React.Component {
 
             <TouchableHighlight
               style={styles.button}
-              onPress={this.onLoginPressed.bind(this)}
+              onPress = {this.submitLogin.bind(this)}
+              >
+              <Text style={styles.buttonTextColor}> USE THIS TO TEST LOGIN</Text>
+            </TouchableHighlight>
+
+            <TouchableHighlight
+              style={styles.button}
+              // onPress={this.onLoginPressed.bind(this)}
               onPress={() => this.props.navigation.navigate('Home')}
               >
-              <Text style={styles.buttonTextColor}> LOGIN </Text>
+              <Text style={styles.buttonTextColor}> LOGIN (go to home) </Text>
             </TouchableHighlight>
 
              <TouchableHighlight
@@ -98,7 +144,7 @@ class Login extends React.Component {
         </View>
       </ScrollView>
     );
-  }
+  };
 }
 
 const styles = StyleSheet.create({
