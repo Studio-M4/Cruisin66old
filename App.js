@@ -17,7 +17,7 @@ import Details from './client/component/Details';
 import Favorites from './client/component/Favorites';
 import Itinerary from "./client/component/Itinerary";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import Profil from "./client/component/Profil";
+import Profile from "./client/component/Profile";
 import CreateItinerary from "./client/component/CreateItinerary";
 import CreateStop from './client/component/CreateStop';
 import Stops from "./client/component/Stops";
@@ -27,7 +27,7 @@ import MapComponent from "./client/component/MapComponent";
 
 const TabsIcons = (isFocused) => (
   {
-    Profil: `ios-contact${isFocused ? "" : "-outline"}`,
+    Profile: `ios-contact${isFocused ? "" : "-outline"}`,
     Favorites: `ios-folder${isFocused ? "" : "-outline"}`,
     CreateItinerary: `ios-add-circle${isFocused ? "" : "-outline"}`,
     CreateStop: `ios-add-circle${isFocused ? "" : "-outline"}`,
@@ -41,7 +41,7 @@ const Tabs = createBottomTabNavigator(
     Itinerary: Itinerary,
     Favorites: Favorites,
     CreateItinerary: CreateItinerary,
-    Profil: Profil
+    Profile: Profile
     },
   {
     navigationOptions: ({ navigation }) => ({
@@ -68,7 +68,7 @@ const AppStack = createStackNavigator({
   Favorites:Favorites,
   Itinerary:Itinerary,
   Stops:Stops,
-  Profil:Profil,
+  Profile:Profile,
   CommentStop:CommentStop,
   MapComponent: MapComponent,
   CreateStop:CreateStop

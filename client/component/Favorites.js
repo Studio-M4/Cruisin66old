@@ -21,7 +21,7 @@ import {
 
 export default class Favorites extends React.Component {
     static navigationOptions = {
-        title: 'Favoris',
+        title: 'Favorites',
     };
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ export default class Favorites extends React.Component {
 
 
   goDetails(){
-    this.props.navigation.navigate('Profil');
+    this.props.navigation.navigate('Profile');
   }
 
   render() {

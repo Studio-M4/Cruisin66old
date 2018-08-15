@@ -32,7 +32,7 @@ export default class CommentStop extends React.Component {
   }
 
   goDetails(){
-    this.props.navigation.navigate('Profil');
+    this.props.navigation.navigate('Profile');
   }
 
   render() {
