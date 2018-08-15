@@ -1,5 +1,36 @@
 const bcrypt = require('bcrypt-nodejs');
 
+const createSession = (req, res, newUser) => {
+  return req.session.regenerate(() => {
+    req.session.user = newUser;
+
+    let withoutPassword = {
+      userId: newUser.id,
+      firstName: newUser.firstName,
+      lastName: newUser.lastName,
+      userName: newUser.userName,
+      email: newUser.email,
+      photoAvar: newUser.photoAvar
+    }
+    res.send(withoutPassword);
+  });
+}
+
+const isLoggedIn = (req, res) => {
+  return req.session ? !! req.session.user : false;
+}
+
+const checkUser = (req, res, next) => {
+  if (!module.exports.isLoggedIn(req)) {
+    res.json({
+      messageCode: 401,
+      message: 'User must login'
+    });
+  } else {
+    next();
+  }
+}
+
 const hashPassword = (user, callback) => {
   bcrypt.genSalt(10, (err, salt) => {
     if (err) {
@@ -35,3 +66,7 @@ const validateUrl = (url) => {
 module.exports.hashPassword = hashPassword;
 module.exports.validateEmail = validateEmail;
 module.exports.validateUrl = validateUrl;
+
+module.exports.createSession = createSession;
+module.exports.isLoggedIn = isLoggedIn;
+module.exports.checkUser = checkUser;

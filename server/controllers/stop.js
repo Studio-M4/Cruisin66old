@@ -1,5 +1,5 @@
 // This is the file that pass request to db Stop model
-const db = require('../../db/models.js');
+const db = require('../../db/models/');
 
 let getAllStops = (query, callback) => {
   db.Stop.findAll({ 

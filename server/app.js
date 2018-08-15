@@ -1,7 +1,10 @@
 var express = require('express');
 // Middleware
 var morgan = require('morgan');
-const bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var util = require('./utilities/helps');
+
 var app = express();
 
 /****** SETUP HEADERS *****/
@@ -11,13 +14,23 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // Set what we are listening on
 app.set('port', 3000);
 // Logging and parsing
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(
+  session({
+    secret: 'jurassic eggs',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {secure: true}
+  })
+);
+
+app.get('/', util.checkUser, (req, res) => {});
 
 // Set up the routes
 app.post('/signup', require('./routes/signup.js'));

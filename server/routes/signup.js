@@ -1,6 +1,7 @@
 const db = require('../controllers/user.js');
 const app = require('../app.js');
 const signup = require('express').Router();
+const util = require('../utilities/helps.js');
 
 signup.post('/signup', (req, res) => {
   let newUser = {
@@ -18,8 +19,11 @@ signup.post('/signup', (req, res) => {
       res.sendStatus(500);
       res.send('Server side error happened');
     } else {
-      res.json(data);
-      console.log(data);
+      if (data.messageCode === 101) {
+        res.json(data);
+      } else {
+        util.createSession(req, res, data);
+      }
     }
   });
 });

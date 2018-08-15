@@ -1,4 +1,4 @@
-const db = require('../../db/models.js');
+const db = require('../../db/models/');
 
 let getAllItineraries = (query, callback) => {
   db.Itinerary.findAll({ 

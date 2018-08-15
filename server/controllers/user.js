@@ -1,8 +1,7 @@
 // This is the file that pass request to db User model
 const bcrypt = require('bcrypt-nodejs');
-// const user = require('../../db/models.js').User;
-const db = require('../../db/models');
-const hash = require('../../db/utilities/helps.js');
+const db = require('../../db/models/');
+const hash = require('../utilities/helps.js');
 
 let login = (query, callback) => {
   db.User.findOne({ 

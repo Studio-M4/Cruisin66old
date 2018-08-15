@@ -9,21 +9,3 @@ module.exports = (Sequelize, type) => {
 
   return Favorite;
 };
-
-
-
-
-
-
-// const Sequelize = require('sequelize');
-// const db = require('../db.js');
-
-// const Favorite = db.define('favorite', {
-// });
-
-// Favorite
-//   .sync({ force: true })
-//   .then(() => {
-//     return Favorite.create({
-//     });
-//   });

@@ -1,6 +1,7 @@
 const db = require('../controllers/user.js');
 const app = require('../app.js');
 const login = require('express').Router();
+const util = require('../utilities/helps.js');
 
 login.post('/login', (req, res) => {
   let query = {
@@ -14,8 +15,12 @@ login.post('/login', (req, res) => {
       res.sendStatus(500);
       res.send('Server side error happened');
     } else {
-      res.json(data);
-      console.log(data);
+      if (data.messageCode === 102 || data.messageCode === 103) {
+        res.json(data);
+      } else {
+        // send something to indicate session state change
+        util.createSession(req, res, data);
+      }
     }
   });
 });
