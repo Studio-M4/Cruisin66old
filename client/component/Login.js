@@ -55,7 +55,7 @@ class Login extends React.Component {
 
   submitLogin() {
     console.log('inside submitLogin')
-    console.log('username', this.state.username)
+    console.log('email', this.state.email)
     console.log('password', this.state.password)
 
     return fetch('http://localhost:3000/login', {
@@ -65,20 +65,24 @@ class Login extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: this.state.username,
+        email: this.state.email,
         password: this.state.password
       })
     })
     .then((response) => {
+      console.log(response);
       if (response.error) {
         console.log("Error with login information")
       } else {
-        console.log('Login success')
-        AsyncStorage.setItem('token', response.token)
-        .then(() => {
-          this.props.navigation.navigate('Home')
-        });
+        console.log('Login success');
+        return response.json();
       }
+    })
+    .then(data => {
+      // AsyncStorage.setItem('token', data.token)
+      // .then(() => {
+        this.props.navigation.navigate('Home', data.token);
+      // });
     })
     .catch((err) => {
       console.log(err)
@@ -101,13 +105,13 @@ class Login extends React.Component {
           <View style={styles.formStyle}>
             <TextInput
               style={styles.inputStyle}
-              placeholder="username"
-              onChangeText={(username) => this.setState({ username })}
-              value={this.state.username}
+              placeholder="Email"
+              onChangeText={(email) => this.setState({ email })}
+              value={this.state.email}
             />
             <TextInput
               style={styles.inputStyle}
-              placeholder="Your password"
+              placeholder="Password"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
               secureTextEntry
