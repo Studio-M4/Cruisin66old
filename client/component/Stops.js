@@ -31,6 +31,8 @@ import {
   FooterTab
 } from "native-base";
 
+import {NavigationEvents} from 'react-navigation'
+
 class Stops extends React.Component {
   static navigationOptions = {
     title: "Stops",
@@ -103,16 +105,23 @@ class Stops extends React.Component {
     });
   }
 
+  handleFocus() {
+    this.getStopsById();
+  }
+
   render() {
     return (
       <Container>
+        <NavigationEvents
+          onDidFocus = {payload => this.handleFocus()}
+        />
         <Content>
           <CardItem cardBody>
             <ImageBackground
-              source={{ uri: 'https://www.worldatlas.com/r/w728-h425-c728x425/upload/3c/e1/38/shutterstock-425692558.jpg' }}
+              source={{ uri: 'https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1440464211%2FPCH0815-brixy-bridge.jpg%3Fitok%3DtDtK_XRW&w=700&q=85' }}
               style={{ height: 200, width: null, flex: 1 }}
             >
-            <Text style={styles.tourname}>Taiwan 101</Text>
+            <Text style={styles.tourname}>Pacific Coast Highway</Text>
             </ImageBackground>
           </CardItem>
           <FlatList
@@ -151,7 +160,7 @@ class Stops extends React.Component {
                 <Card>
                   <CardItem>
                     <Left>
-                      <Thumbnail square style={{width: 75, height: 75}} source={{ uri: item.url }} />
+                      <Thumbnail square style={{width: 75, height: 75}} source={{ uri: item.photo || 'https://images-na.ssl-images-amazon.com/images/I/11qnZ2RCZML._SX331_BO1,204,203,200_.jpg' }} />
                       <Body>
                         <Text>{item.name}</Text>
                         <Text note>{item.description}</Text>

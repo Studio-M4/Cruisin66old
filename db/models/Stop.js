@@ -9,6 +9,7 @@ module.exports = (Sequelize, type) => {
     address: type.STRING,
     zipCode: type.STRING,
     audioFile: type.STRING,
+    photo: type.STRING
   });
 
   Stop.associate = function(models) {

@@ -56,8 +56,15 @@ export default class Itinerary extends React.Component {
           <FlatList
             data={[
               {
-                albumId: 1,
                 id: 1,
+                name: "Sophia",
+                notes: 'scrum master Lee',
+                itinerary: 'Pacific Coast Highway',
+                url: "https://imagesvc.timeincapp.com/v3/mm/image?url=https%3A%2F%2Fcdn-image.travelandleisure.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F1600x1000%2Fpublic%2F1440464211%2FPCH0815-brixy-bridge.jpg%3Fitok%3DtDtK_XRW&w=700&q=85",
+                thumbnailUrl: "https://avatars0.githubusercontent.com/u/25995901?s=460&v=4"
+              },
+              {
+                id: 2,
                 name: "Henry",
                 notes: 'from the land of pineapple cakes',
                 itinerary: 'Taiwan 101',
@@ -65,16 +72,6 @@ export default class Itinerary extends React.Component {
                 thumbnailUrl: "https://avatars1.githubusercontent.com/u/37286505?s=460&v=4"
               },
               {
-                albumId: 1,
-                id: 2,
-                name: "Julio",
-                notes: 'likes to wear beanies',
-                itinerary: 'Super cool tour name',
-                url: "http://haitianhollywood.com/images/banners/Port-au-Prince.jpg",
-                thumbnailUrl: "https://avatars3.githubusercontent.com/u/10291526?s=460&v=4"
-              },
-              {
-                albumId: 1,
                 id: 3,
                 name: "Ningyi",
                 notes: 'master pepper',
@@ -83,52 +80,30 @@ export default class Itinerary extends React.Component {
                 thumbnailUrl: "https://avatars0.githubusercontent.com/u/4583739?s=460&v=4"
               },
               {
-                albumId: 1,
                 id: 4,
+                name: "Julio",
+                notes: 'likes to wear beanies',
+                itinerary: 'super cool tour name',
+                url: "http://www.explorehaiti-dmc.com/sites/default/files/styles/large/public/Haiti-0281-res.jpg?itok=dH7QjMAs",
+                thumbnailUrl: "https://avatars3.githubusercontent.com/u/10291526?s=460&v=4"
+              },
+              {
+                id: 5,
                 name: "Sophia",
-                notes: 'talks too much',
+                notes: 'scrum master Lee',
                 itinerary: "NYC Pizza Time",
                 url: "https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg",
                 thumbnailUrl: "https://avatars0.githubusercontent.com/u/25995901?s=460&v=4"
               },
               {
-                albumId: 1,
-                id: 5,
+                id: 6,
                 name: "Ningyi",
                 notes: 'master pepper',
-                itinerary: 'Napa Valley Wine',
-                url: "https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?auto=compress&cs=tinysrgb&h=350",
+                itinerary: 'Ultimate Yellowstone',
+                url: "https://www.theepochtimes.com/assets/uploads/2017/12/14/AA-1280px-Grand_Prismatic_Spring-1-700x420.jpg",
                 thumbnailUrl: "https://avatars0.githubusercontent.com/u/4583739?s=460&v=4"
               },
-              {
-                albumId: 1,
-                id: 6,
-                title: "officia porro iure quia iusto qui ipsa ut modi",
-                url: "http://placehold.it/600/24f355",
-                thumbnailUrl: "http://placehold.it/150/24f355"
-              },
-              {
-                albumId: 1,
-                id: 7,
-                title:
-                  "culpa odio esse rerum omnis laboriosam voluptate repudiandae",
-                url: "http://placehold.it/600/d32776",
-                thumbnailUrl: "http://placehold.it/150/d32776"
-              },
-              {
-                albumId: 1,
-                id: 8,
-                title: "natus nisi omnis corporis facere molestiae rerum in",
-                url: "http://placehold.it/600/f66b97",
-                thumbnailUrl: "http://placehold.it/150/f66b97"
-              },
-              {
-                albumId: 1,
-                id: 9,
-                title: "accusamus ea aliquid et amet sequi nemo",
-                url: "http://placehold.it/600/56a8c2",
-                thumbnailUrl: "http://placehold.it/150/56a8c2"
-              }
+
             ]}
             renderItem={({ item }) => (
               <TouchableHighlight
@@ -157,7 +132,7 @@ export default class Itinerary extends React.Component {
                      <Text style={styles.tourname}>{item.itinerary}</Text>
                     </ImageBackground>
                   </CardItem>
-                  <CardItem>
+                  {/* <CardItem>
                     <Left>
                       <Button transparent>
                         <Icon active name="thumbs-up" />
@@ -169,7 +144,7 @@ export default class Itinerary extends React.Component {
                         <Icon active name="chatbubbles" />
                         <Text
                           onPress={() => {
-                            /* 1. Navigate to the Details route with params */
+                             1. Navigate to the Details route with params 
                             this.props.navigation.navigate("CommentStop", {
                               itinerary: item
                             });
@@ -179,7 +154,7 @@ export default class Itinerary extends React.Component {
                     <Right>
                       <Text>11h ago</Text>
                     </Right>
-                  </CardItem>
+                  </CardItem> */}
                 </Card>
               </TouchableHighlight>
             )}

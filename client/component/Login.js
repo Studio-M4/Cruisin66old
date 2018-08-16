@@ -119,7 +119,7 @@ class Login extends React.Component {
               // onPress={this.onLoginPressed.bind(this)}
               onPress={this.submitLogin.bind(this)}
               >
-              <Text style={styles.buttonTextColor}> LOGIN (go to home) </Text>
+              <Text style={styles.buttonTextColor}> LOGIN </Text>
             </TouchableHighlight>
 
             <TouchableHighlight
