@@ -47,18 +47,37 @@ class Stops extends React.Component {
     super(props);
     this.state = {
       itineraryId: null, 
-      modalVisible: false
+      modalVisible: false,
+      stops: []
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const { navigation } = this.props;
     // This is passed from Itinerary component.
     const itineraryId = navigation.getParam('itinerary').id;
+    console.log(navigation);
     this.setState({ itineraryId });
   }
 
+  componentDidMount() {
+    this.getStopsById();
+  }
+
   getStopsById = () => {
+    // const params = {
+    //   itineraryId: this.state.itineraryId
+    // };
+    
+    // var esc = encodeURIComponent;
+    // var query = Object.keys(params)
+    //     .map(k => esc(k) + '=' + esc(params[k]))
+    //     .join('&');
+
+    // let url = `http://localhost:3000/stop?${query}`;
+    // console.log(url);
+
+    // return fetch(url, {
     return fetch('http://localhost:3000/stops', {
       method: 'GET', 
       headers: {
@@ -66,11 +85,18 @@ class Stops extends React.Component {
         'Content-Type': 'application/json',
       }
     })
-    .then((res) => {
-      if (res.error) {
-        throw res.error;
+    .then((response) => {
+      if (response.error) {
+        console.log(response.error);
+      } else {
+        return response.json();
       }
-      return res.json();
+    })
+    .then(data => {
+      console.log('stops', data);
+      this.setState({
+        stops: data
+      })
     })
     .catch((error) => {
       console.log(error)
@@ -90,27 +116,29 @@ class Stops extends React.Component {
             </ImageBackground>
           </CardItem>
           <FlatList
-            data={[
-              {
-                id: 1,
-                name: "Taipei 101",
-                description: "Come here for a spectacular view. Best time is at sunset!",
-                url: "http://images.skyscrapercenter.com/building/tapei101_ext-main2_(c)taipeifinancial.jpg",
-              },
-              {
-                id: 2,
-                name: "Taroko National Park",
-                description: 'My favorite site is the Eternal Spring Shrine!',
-                url: "http://www.thelostpassport.com/wp-content/uploads/2016/09/Overlooking-the-river-in-Taroko-Gorge-National-Park.jpg",
-              },
+            // data={[
+            //   {
+            //     id: 1,
+            //     name: "Taipei 101",
+            //     description: "Come here for a spectacular view. Best time is at sunset!",
+            //     url: "http://images.skyscrapercenter.com/building/tapei101_ext-main2_(c)taipeifinancial.jpg",
+            //   },
+            //   {
+            //     id: 2,
+            //     name: "Taroko National Park",
+            //     description: 'My favorite site is the Eternal Spring Shrine!',
+            //     url: "http://www.thelostpassport.com/wp-content/uploads/2016/09/Overlooking-the-river-in-Taroko-Gorge-National-Park.jpg",
+            //   },
 
-              {
-                id: 6,
-                title: "accusamus ea aliquid et amet sequi nemo",
-                url: "http://placehold.it/600/56a8c2",
-                thumbnailUrl: "http://placehold.it/150/56a8c2"
-              }
-            ]}
+            //   {
+            //     id: 6,
+            //     title: "accusamus ea aliquid et amet sequi nemo",
+            //     url: "http://placehold.it/600/56a8c2",
+            //     thumbnailUrl: "http://placehold.it/150/56a8c2"
+            //   }
+            // ]}
+            data = {this.state.stops}
+            
             renderItem={({ item }) => (
               <TouchableHighlight
                 onPress={() => {
@@ -130,31 +158,6 @@ class Stops extends React.Component {
                       </Body>
                     </Left>
                   </CardItem>
-                  {/* <CardItem cardBody >
-                    <Image
-                      source={{ uri: item.url }}
-                      style={{ height: 200, width: null, flex: 1 }}
-                    />
-                    <Text>{item.name}</Text>
-                    <Text>{item.description}</Text>
-                  </CardItem> */}
-                  {/* <CardItem>
-                    <Left>
-                      <Button transparent>
-                        <Icon active name="thumbs-up" />
-                        <Text>12 Likes</Text>
-                      </Button>
-                    </Left>
-                    <Body>
-                      <Button transparent>
-                        <Icon active name="chatbubbles" />
-                        <Text>4 Comments</Text>
-                      </Button>
-                    </Body>
-                    <Right>
-                      <Text>11h ago</Text>
-                    </Right>
-                  </CardItem> */}
                 </Card>
               </TouchableHighlight>
             )}

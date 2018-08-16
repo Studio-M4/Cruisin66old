@@ -1,11 +1,7 @@
 const db = require('../../db/models/');
 
-let getAllItineraries = (query, callback) => {
-  db.Itinerary.findAll({ 
-    where: {
-      userId: query.userId
-    }
-  }) 
+let getAllItineraries = (callback) => {
+  db.Itinerary.findAll() 
   .then((itineraries) => {
     console.log(itineraries);    
     callback(null, itineraries);

@@ -1,7 +1,5 @@
 import React from 'react';
 
-import t from 'tcomb-form-native';
-
 import { 
   StyleSheet, 
   Text, 
@@ -19,37 +17,6 @@ import {
   Button
 } from 'native-base';
 import FormMessage from './FormMessage'
-
-const Form = t.form.Form
-
-const User = t.struct({
-  'first name': t.String,
-  'last name': t.String,
-  username: t.String,
-  email: t.String,
-  password: t.String,
-});
-
-const options = {
-  fields: {
-    'first name': {
-      error: 'First name is required'
-    },
-    'last name': {
-      error: 'Last name is required'
-    },
-    username: {
-      error: 'Username is required'
-    },
-    email: {
-
-    },
-    password: {
-      error: 'Password is required'
-    },
-  },
-};
-
 
 class Signup extends React.Component {
 
@@ -97,6 +64,7 @@ class Signup extends React.Component {
     .then(data => {
       // AsyncStorage.setItem('token', data.token)
       // .then(() => {
+        console.log(data);
         this.props.navigation.navigate('Home', data.token);
       // });
     })

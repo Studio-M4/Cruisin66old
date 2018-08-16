@@ -16,23 +16,21 @@ import {
   Icon
 } from 'native-base';
 import FormMessage from './FormMessage'
-
-
 class Login extends React.Component {
   static navigationOptions = {
       title: 'Cruisin\'66'
   };
 
   constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: '',
-      validUsername: false, 
-      validPassword: false,
-      showProgress: false,
-      error: null
-    };
+      super(props);
+      this.state = {
+        username: '',
+        password: '',
+        validUsername: false, 
+        validPassword: false,
+        showProgress: false,
+        error: null
+      };
   }
 
   // onLoginPressed() {
@@ -52,7 +50,6 @@ class Login extends React.Component {
   //todo: handler utility for response messages 
   //https://medium.com/@yoniweisbrod/interacting-with-apis-using-react-native-fetch-9733f28566bb
 
-
   submitLogin() {
     console.log('inside submitLogin')
     console.log('email', this.state.email)
@@ -70,7 +67,7 @@ class Login extends React.Component {
       })
     })
     .then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response.error) {
         console.log("Error with login information")
       } else {
@@ -81,6 +78,7 @@ class Login extends React.Component {
     .then(data => {
       // AsyncStorage.setItem('token', data.token)
       // .then(() => {
+        console.log(data);
         this.props.navigation.navigate('Home', data.token);
       // });
     })
@@ -116,10 +114,10 @@ class Login extends React.Component {
               value={this.state.password}
               secureTextEntry
             />
-
             <TouchableHighlight
               style={styles.button}
-              onPress = {this.submitLogin.bind(this)}
+              // onPress={this.onLoginPressed.bind(this)}
+              onPress={this.submitLogin.bind(this)}
               >
               <Text style={styles.buttonTextColor}> LOGIN (go to home) </Text>
             </TouchableHighlight>

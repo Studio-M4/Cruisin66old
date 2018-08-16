@@ -4,10 +4,8 @@ const getItineraryById = require('express').Router();
 
 getItineraryById.get('/itinerary', (req, res) => {
   console.log(req.params);
-  let query = {
-    id: 3
-  }
-
+  let query = req.params;
+  
   db.getItineraryById(query, (err, data) => {
     console.log(query);
     if (err) {

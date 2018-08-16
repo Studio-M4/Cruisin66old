@@ -1,21 +1,22 @@
 // This is the file that pass request to db Stop model
 const db = require('../../db/models/');
 
-const getAllStops = (query, callback) => {
-  db.Stop.findAll({
-    where: {
-      itineraryId: query.itineraryId,
-    },
+let getAllStops = (callback) => {
+  // db.Stop.findAll({
+  //   where: {
+  //     itineraryId: query.itineraryId,
+  //   },
+  // })
+  db.Stop.findAll()
+  .then((stops) => {
+    console.log(stops);
+    callback(null, stops);
   })
-    .then((stops) => {
-      console.log(stops);
-      callback(null, stops);
-    })
-    .catch((err) => {
-      // Handle any error in the chain
-      console.error(err);
-      callback(err, null);
-    });
+  .catch((err) => {
+    // Handle any error in the chain
+    console.error(err);
+    callback(err, null);
+  });
 };
 
 const getStopById = (query, callback) => {

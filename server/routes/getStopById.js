@@ -4,9 +4,7 @@ const getStopById = require('express').Router();
 
 getStopById.get('/stop', (req, res) => {
   console.log(req.params);
-  let query = {
-    id: 1
-  }
+  let query = req.params;
 
   db.getStopById(query, (err, data) => {
     console.log(query);
