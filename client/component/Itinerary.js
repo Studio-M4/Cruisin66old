@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   Image,
+  ImageBackground,
   TextInput,
   TouchableHighlight,
   ScrollView,
@@ -57,37 +58,47 @@ export default class Itinerary extends React.Component {
               {
                 albumId: 1,
                 id: 1,
-                title: "accusamus beatae ad facilis cum similique qui sunt",
-                url: "http://placehold.it/600/92c952",
-                thumbnailUrl: "http://placehold.it/150/92c952"
+                name: "Henry",
+                notes: 'from the land of pineapple cakes',
+                itinerary: 'Taiwan 101',
+                url: "https://www.worldatlas.com/r/w728-h425-c728x425/upload/3c/e1/38/shutterstock-425692558.jpg",
+                thumbnailUrl: "https://avatars1.githubusercontent.com/u/37286505?s=460&v=4"
               },
               {
                 albumId: 1,
                 id: 2,
-                title: "reprehenderit est deserunt velit ipsam",
-                url: "http://placehold.it/600/771796",
-                thumbnailUrl: "http://placehold.it/150/771796"
+                name: "Julio",
+                notes: 'likes to wear beanies',
+                itinerary: 'Super cool tour name',
+                url: "http://haitianhollywood.com/images/banners/Port-au-Prince.jpg",
+                thumbnailUrl: "https://avatars3.githubusercontent.com/u/10291526?s=460&v=4"
               },
               {
                 albumId: 1,
-                id: 2,
-                title: "reprehenderit est deserunt velit ipsam",
-                url: "http://placehold.it/600/771796",
-                thumbnailUrl: "http://placehold.it/150/771796"
+                id: 3,
+                name: "Ningyi",
+                notes: 'master pepper',
+                itinerary: 'Bay Area Tour',
+                url: "https://media-cdn.tripadvisor.com/media/photo-s/06/b2/0f/a6/golden-gate-bridge.jpg",
+                thumbnailUrl: "https://avatars0.githubusercontent.com/u/4583739?s=460&v=4"
               },
               {
                 albumId: 1,
-                id: 2,
-                title: "reprehenderit est deserunt velit ipsam",
-                url: "http://placehold.it/600/771796",
-                thumbnailUrl: "http://placehold.it/150/771796"
+                id: 4,
+                name: "Sophia",
+                notes: 'talks too much',
+                itinerary: "NYC Pizza Time",
+                url: "https://amp.businessinsider.com/images/5ad8ae04cd862425008b4898-750-563.jpg",
+                thumbnailUrl: "https://avatars0.githubusercontent.com/u/25995901?s=460&v=4"
               },
               {
                 albumId: 1,
-                id: 2,
-                title: "reprehenderit est deserunt velit ipsam",
-                url: "http://placehold.it/600/771796",
-                thumbnailUrl: "http://placehold.it/150/771796"
+                id: 5,
+                name: "Ningyi",
+                notes: 'master pepper',
+                itinerary: 'Napa Valley Wine',
+                url: "https://images.pexels.com/photos/442116/pexels-photo-442116.jpeg?auto=compress&cs=tinysrgb&h=350",
+                thumbnailUrl: "https://avatars0.githubusercontent.com/u/4583739?s=460&v=4"
               },
               {
                 albumId: 1,
@@ -133,16 +144,18 @@ export default class Itinerary extends React.Component {
                     <Left>
                       <Thumbnail source={{ uri: item.thumbnailUrl }} />
                       <Body>
-                        <Text>Julio </Text>
-                        <Text note>{item.title}</Text>
+                        <Text>{item.name}</Text>
+                        <Text note>{item.notes}</Text>
                       </Body>
                     </Left>
                   </CardItem>
                   <CardItem cardBody>
-                    <Image
-                      source={{ uri: item.thumbnailUrl }}
+                    <ImageBackground
+                      source={{ uri: item.url }}
                       style={{ height: 200, width: null, flex: 1 }}
-                    />
+                    >
+                     <Text style={styles.tourname}>{item.itinerary}</Text>
+                    </ImageBackground>
                   </CardItem>
                   <CardItem>
                     <Left>
@@ -222,5 +235,15 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: "80%",
     marginTop: 5
+  },
+  tourname: {
+    color: '#fff',
+    textAlign: 'center',
+    marginTop:90,
+    fontSize:30,
+    fontWeight: 'bold',
+    textShadowColor: '#000',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
   }
 });

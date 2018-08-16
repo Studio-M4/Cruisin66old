@@ -29,16 +29,16 @@ export default class Profile extends React.Component {
           <Text style={styles.title}> Julio Jean Fils </Text>
 
          <SegmentedControlTab tabsContainerStyle={styles.tabsContainerStyle}
-        tabStyle={styles.tabStyle}
-        tabTextStyle={styles.tabTextStyle}
-        activeTabStyle={styles.activeTabStyle}
-        activeTabTextStyle={styles.activeTabTextStyle}
-        selectedIndex={1}
-        selectedIndex={this.state.selectedIndex}
-        onTabPress={this.handleIndexChange}
-        allowFontScaling={false}
-        values={['Itenaries', 'Stops', 'Followers']}
-        onPress= {index => this.setState({selected:index})}
+          tabStyle={styles.tabStyle}
+          tabTextStyle={styles.tabTextStyle}
+          activeTabStyle={styles.activeTabStyle}
+          activeTabTextStyle={styles.activeTabTextStyle}
+          selectedIndex={1}
+          selectedIndex={this.state.selectedIndex}
+          onTabPress={this.handleIndexChange}
+          allowFontScaling={false}
+          values={['Itineraries', 'Stops', 'Favorites']}
+          onPress= {index => this.setState({selected:index})}
         />
           
         </View>

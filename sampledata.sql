@@ -1,7 +1,7 @@
 USE cruisin66_dev;
 
-INSERT INTO users (username, firstname, lastname, password, photoAvatar, createdat, updatedat)
-VALUES ('slee', 'sophia', 'lee', 'password', 'photoavatarurl', '2018-08-14 12:32:00', '2018-08-14 12:32:00');
+INSERT INTO users (username, email, firstname, lastname, password, photoAvatar, createdat, updatedat)
+VALUES ('slee', 'soph915@gmail.com', 'sophia', 'lee', 'password', 'photoavatarurl', '2018-08-14 12:32:00', '2018-08-14 12:32:00');
 
 INSERT INTO categories (name, createdat, updatedat)
 VALUES ('nature', '2018-08-14 12:32:00', '2018-08-14 12:32:00');

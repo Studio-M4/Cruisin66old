@@ -5,6 +5,7 @@ import {
   FlatList,
   Image,
   TextInput,
+  ImageBackground,
   TouchableHighlight,
   ScrollView,
   Modal
@@ -53,25 +54,30 @@ class Stops extends React.Component {
     return (
       <Container>
         <Content>
+          <CardItem cardBody>
+            <ImageBackground
+              source={{ uri: 'https://www.worldatlas.com/r/w728-h425-c728x425/upload/3c/e1/38/shutterstock-425692558.jpg' }}
+              style={{ height: 200, width: null, flex: 1 }}
+            >
+            <Text style={styles.tourname}>Taiwan 101</Text>
+            </ImageBackground>
+          </CardItem>
           <FlatList
             data={[
               {
-                albumId: 1,
                 id: 1,
-                title: "accusamus beatae ad facilis cum similique qui sunt",
-                url: "http://placehold.it/600/92c952",
-                thumbnailUrl: "http://placehold.it/150/92c952"
+                name: "Taipei 101",
+                description: "Come here for a spectacular view. Best time is at sunset!",
+                url: "http://images.skyscrapercenter.com/building/tapei101_ext-main2_(c)taipeifinancial.jpg",
               },
               {
-                albumId: 1,
                 id: 2,
-                title: "reprehenderit est deserunt velit ipsam",
-                url: "http://placehold.it/600/771796",
-                thumbnailUrl: "http://placehold.it/150/771796"
+                name: "Taroko National Park",
+                description: 'My favorite site is the Eternal Spring Shrine!',
+                url: "http://www.thelostpassport.com/wp-content/uploads/2016/09/Overlooking-the-river-in-Taroko-Gorge-National-Park.jpg",
               },
 
               {
-                albumId: 1,
                 id: 6,
                 title: "accusamus ea aliquid et amet sequi nemo",
                 url: "http://placehold.it/600/56a8c2",
@@ -90,20 +96,22 @@ class Stops extends React.Component {
                 <Card>
                   <CardItem>
                     <Left>
-                      <Thumbnail source={{ uri: item.thumbnailUrl }} />
+                      <Thumbnail square style={{width: 75, height: 75}} source={{ uri: item.url }} />
                       <Body>
-                        <Text>Julio </Text>
-                        <Text note>{item.title}</Text>
+                        <Text>{item.name}</Text>
+                        <Text note>{item.description}</Text>
                       </Body>
                     </Left>
                   </CardItem>
-                  <CardItem cardBody>
+                  {/* <CardItem cardBody >
                     <Image
-                      source={{ uri: item.thumbnailUrl }}
+                      source={{ uri: item.url }}
                       style={{ height: 200, width: null, flex: 1 }}
                     />
-                  </CardItem>
-                  <CardItem>
+                    <Text>{item.name}</Text>
+                    <Text>{item.description}</Text>
+                  </CardItem> */}
+                  {/* <CardItem>
                     <Left>
                       <Button transparent>
                         <Icon active name="thumbs-up" />
@@ -119,7 +127,7 @@ class Stops extends React.Component {
                     <Right>
                       <Text>11h ago</Text>
                     </Right>
-                  </CardItem>
+                  </CardItem> */}
                 </Card>
               </TouchableHighlight>
             )}
@@ -153,4 +161,19 @@ class Stops extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  tourname: {
+    color: '#fff',
+    textAlign: 'center',
+    marginTop:90,
+    fontSize:30,
+    fontWeight: 'bold',
+    textShadowColor: '#000',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10
+  }
+});
+
+
 export default Stops;
