@@ -24,15 +24,15 @@ class Login extends React.Component {
   };
 
   constructor(props) {
-      super(props);
-      this.state = {
-        username: '',
-        password: '',
-        validUsername: false, 
-        validPassword: false,
-        showProgress: false,
-        error: null
-      };
+    super(props);
+    this.state = {
+      username: '',
+      password: '',
+      validUsername: false, 
+      validPassword: false,
+      showProgress: false,
+      error: null
+    };
   }
 
   // onLoginPressed() {
@@ -120,14 +120,6 @@ class Login extends React.Component {
             <TouchableHighlight
               style={styles.button}
               onPress = {this.submitLogin.bind(this)}
-              >
-              <Text style={styles.buttonTextColor}> USE THIS TO TEST LOGIN</Text>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              style={styles.button}
-              // onPress={this.onLoginPressed.bind(this)}
-              onPress={() => this.props.navigation.navigate('Home')}
               >
               <Text style={styles.buttonTextColor}> LOGIN (go to home) </Text>
             </TouchableHighlight>
